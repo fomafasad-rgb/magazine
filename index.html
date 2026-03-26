@@ -3,84 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог товарів | FOMAFASAD-RGB</title>
+    <title>FOMAFASAD-RGB | Завод металовиробів</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
-        :root { --bg: #0a0a0a; --card: #141414; --accent: #e67e22; --white: #ffffff; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #e0e0e0; margin: 0; padding-top: 100px; }
+        /* Базові налаштування */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #f8f9fa; color: #333; line-height: 1.6; }
+        a { text-decoration: none; }
+        ul { list-style: none; }
+        html { scroll-behavior: smooth; } /* Плавна прокрутка */
         
-        header { 
-            background: rgba(10,10,10,0.9); padding: 15px 5%; display: flex; 
-            justify-content: space-between; align-items: center; position: fixed; 
-            width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+        /* Фірмові кольори */
+        :root {
+            --primary: #1A2530; /* Глибокий синьо-чорний */
+            --accent: #FF6B00;  /* Сигнальний помаранчевий */
+            --light: #FFFFFF;
+            --text: #4A4A4A;
         }
-        .logo { font-size: 1.6rem; font-weight: 900; color: var(--white); text-decoration: none; }
-        nav a { color: #e0e0e0; text-decoration: none; margin-left: 20px; font-size: 14px; }
+
+        /* Шапка сайту (закріплена) */
+        header { 
+            background: var(--primary); 
+            padding: 15px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
+        }
+        .logo { color: var(--light); font-size: 24px; font-weight: 800; letter-spacing: 1px; }
+        .logo span { color: var(--accent); }
+        
+        nav ul { display: flex; gap: 30px; }
+        nav a { color: var(--light); font-weight: 600; font-size: 14px; text-transform: uppercase; transition: color 0.3s; }
         nav a:hover { color: var(--accent); }
 
-        .container { padding: 40px 5%; max-width: 1200px; margin: auto; }
-        h1 { font-size: 2.5rem; text-align: center; text-transform: uppercase; margin-bottom: 50px; }
-        h1 span { color: var(--accent); }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .product-card { 
-            background: var(--card); border-radius: 12px; overflow: hidden; 
-            transition: 0.3s; border: 1px solid rgba(255,255,255,0.03); 
+        /* Адаптація шапки для мобільних */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; gap: 15px; }
         }
-        .product-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-        .product-card img { width: 100%; height: 220px; object-fit: cover; }
-        .info { padding: 25px; }
-        .price { font-size: 1.5rem; color: var(--accent); font-weight: 700; margin: 15px 0; }
+
+        /* Головний екран з фото */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 37, 48, 0.75), rgba(26, 37, 48, 0.9)), 
+                        url('https://images.unsplash.com/photo-1504917595217-d4dc5efa61df?q=80&w=1920') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            text-align: center; color: var(--light); padding: 0 20px;
+        }
+        .hero h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; line-height: 1.1; }
+        .hero p { font-size: 18px; max-width: 600px; margin-bottom: 40px; color: #ddd; }
         
-        .btn-order { 
-            display: block; background: var(--accent); color: white; text-align: center; 
-            padding: 12px; text-decoration: none; border-radius: 5px; font-weight: 700;
+        .btn { 
+            background: var(--accent); color: var(--light); padding: 16px 40px; 
+            border-radius: 5px; font-weight: 800; text-transform: uppercase; 
+            transition: 0.3s; display: inline-block; letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        }
+        .btn:hover { background: #e65c00; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255, 107, 0, 0.5); }
+
+        /* Заголовки розділів */
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 36px; color: var(--primary); text-transform: uppercase; font-weight: 800; }
+        .section-title h2 span { color: var(--accent); }
+        .section-title p { color: var(--text); font-size: 16px; margin-top: 10px; }
+
+        /* Каталог товарів (світлий фон) */
+        .catalog { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .card { 
+            background: var(--light); border-radius: 10px; overflow: hidden; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: 0.3s; border: 1px solid #eaeaea; 
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.12); border-color: var(--accent); }
+        .card img { width: 100%; height: 250px; object-fit: cover; border-bottom: 3px solid var(--accent); }
+        .card-body { padding: 30px; text-align: center; }
+        .card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+        .card-text { color: var(--text); font-size: 14px; margin-bottom: 25px; min-height: 45px; }
+        .price { font-size: 26px; font-weight: 800; color: var(--primary); margin-bottom: 20px; }
+        
+        .btn-outline { 
+            display: inline-block; padding: 12px 30px; border: 2px solid var(--accent); 
+            color: var(--accent); font-weight: 800; border-radius: 5px; transition: 0.3s; text-transform: uppercase; width: 100%;
+        }
+        .btn-outline:hover { background: var(--accent); color: var(--light); }
+
+        /* Блок контактів (темний) */
+        .contacts { background: var(--primary); color: var(--light); padding: 80px 5%; text-align: center; }
+        .contact-wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px; }
+        .contact-item { 
+            background: rgba(255,255,255,0.05); padding: 40px 30px; 
+            border-radius: 10px; width: 320px; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .contact-item h3 { color: var(--accent); margin-bottom: 15px; font-size: 22px; }
+        .contact-item p { font-size: 16px; margin-bottom: 15px; color: #ccc; }
+        .contact-item a { color: var(--light); font-weight: 800; font-size: 22px; transition: 0.3s; }
+        .contact-item a:hover { color: var(--accent); }
+
+        /* Футер */
+        footer { background: #111820; padding: 25px; text-align: center; color: #666; font-size: 14px; font-weight: 600; }
+
+        /* Адаптація шрифтів для телефонів */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .catalog { padding: 120px 5% 60px; } /* Відступ під шапку */
         }
     </style>
 </head>
 <body>
 
-<header>
-    <a href="index.html" class="logo">FOMAFASAD-RGB</a>
-    <nav>
-        <a href="index.html">Головна</a>
-        <a href="catalog.html" style="color: var(--accent);">Каталог</a>
-        <a href="contacts.html">Контакти</a>
-    </nav>
-</header>
+    <header>
+        <div class="logo">FOMAFASAD<span>RGB</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Головна</a></li>
+                <li><a href="#catalog">Каталог</a></li>
+                <li><a href="#contacts">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="container">
-    <h1>Наш <span>Каталог</span></h1>
-    <div class="grid">
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1617191519105-d0c02f0d922a?q=80&w=800">
-            <div class="info">
-                <h3>Парапетні планки</h3>
-                <p>Будь-які форми для парканів та дахів.</p>
-                <div class="price">від 250 грн/м.п.</div>
-                <a href="contacts.html" class="btn-order">Замовити</a>
+    <section class="hero" id="home">
+        <h1>Виробництво металовиробів</h1>
+        <p>Професійне гнуття. Виготовлення парапетів, відливів та спецпланок будь-якої складності за вашими кресленнями.</p>
+        <a href="#catalog" class="btn">Дивитись каталог</a>
+    </section>
+
+    <section class="catalog" id="catalog">
+        <div class="section-title">
+            <h2>Наш <span>Асортимент</span></h2>
+            <p>Якісна оцинкована сталь з полімерним покриттям</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1617191519105-d0c02f0d922a?q=80&w=800" alt="Парапети">
+                <div class="card-body">
+                    <h3 class="card-title">Парапетні планки</h3>
+                    <p class="card-text">Захист для парканів та дахів. Надійно та естетично.</p>
+                    <div class="price">від 250 ₴/м</div>
+                    <a href="#contacts" class="btn-outline">Замовити</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800" alt="Відливи">
+                <div class="card-body">
+                    <h3 class="card-title">Віконні відливи</h3>
+                    <p class="card-text">Ідеальна геометрія. Будь-який колір за каталогом RAL.</p>
+                    <div class="price">від 180 ₴/м</div>
+                    <a href="#contacts" class="btn-outline">Замовити</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=800" alt="Спецпланки">
+                <div class="card-body">
+                    <h3 class="card-title">Спецвироби</h3>
+                    <p class="card-text">Індивідуальне гнуття за вашими розмірами та кресленнями.</p>
+                    <div class="price">Договірна</div>
+                    <a href="#contacts" class="btn-outline">Прорахувати</a>
+                </div>
             </div>
         </div>
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800">
-            <div class="info">
-                <h3>Відливи віконні</h3>
-                <p>Сталь з полімерним покриттям (RAL).</p>
-                <div class="price">від 180 грн/м.п.</div>
-                <a href="contacts.html" class="btn-order">Замовити</a>
+    </section>
+
+    <section class="contacts" id="contacts">
+        <div class="section-title">
+            <h2 style="color: white;">Зв'яжіться з <span>нами</span></h2>
+            <p style="color: #bbb;">Готові виконати ваше замовлення максимально швидко</p>
+        </div>
+        
+        <div class="contact-wrap">
+            <div class="contact-item">
+                <h3>📍 Адреса</h3>
+                <p>Київська область</p>
+                <p>м. Вишгород / м. Ірпінь</p>
+            </div>
+            <div class="contact-item">
+                <h3>📞 Телефон</h3>
+                <p>Телефонуйте Пн-Сб (9:00 - 18:00)</p>
+                <a href="tel:+380675555555">+38 (067) 555-55-55</a>
+            </div>
+            <div class="contact-item">
+                <h3>💬 Месенджери</h3>
+                <p>Надсилайте креслення для оцінки</p>
+                <a href="https://t.me/твій_нік" style="color: #0088cc;">Telegram</a>
+                <br><br>
+                <a href="viber://chat?number=%2B380675555555" style="color: #7360f2;">Viber</a>
             </div>
         </div>
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=800">
-            <div class="info">
-                <h3>Спецвироби</h3>
-                <p>Гнуття за вашими індивідуальними кресленнями.</p>
-                <div class="price">Договірна</div>
-                <a href="contacts.html" class="btn-order">Замовити</a>
-            </div>
-        </div>
-    </div>
-</div>
+    </section>
+
+    <footer>
+        &copy; 2026 FOMAFASAD-RGB. Всі права захищені.
+    </footer>
 
 </body>
 </html>
