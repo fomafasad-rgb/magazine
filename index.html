@@ -2,35 +2,300 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Головна | Професійні рішення</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOMAFASAD-RGB | Магазин-фабрика металовиробів</title>
+    <style>
+        /* Підключаємо сучасний шрифт */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap');
+
+        /* Глобальні налаштування */
+        :root {
+            --bg-main: #0a0a0a; /* Дуже темний */
+            --bg-card: #141414; /* Трохи світліший темний */
+            --accent: #e67e22; /* Яскравий помаранчевий */
+            --text: #e0e0e0;
+            --white: #ffffff;
+            --shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--bg-main);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Шапка сайту (fixed) */
+        header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--white), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav { display: flex; gap: 20px; }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+        }
+        nav a:hover { color: var(--white); }
+
+        /* Головний блок (The 'Wow' Section) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), 
+                        url('https://images.unsplash.com/photo-1504917595217-d4dc5efa61df?q=80&w=1920'); /* Фото цеху */
+            background-size: cover;
+            background-position: center;
+            padding: 0 20px;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span { color: var(--accent); }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 40px;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: var(--white);
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.6);
+        }
+
+        /* Розділ каталогу товаров */
+        .products {
+            padding: 80px 5%;
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--white);
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .products h2::after {
+            content: ''; display: block; width: 60px; height: 4px; background: var(--accent); margin: 10px auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: rgba(230, 126, 34, 0.3);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .product-card-content {
+            padding: 30px;
+        }
+
+        .product-card-content h3 {
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .product-card-content p {
+            font-size: 0.95rem;
+            color: #b0b0b0;
+            margin-bottom: 25px;
+        }
+
+        .price-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .product-card .btn-small {
+            background: transparent;
+            color: var(--text);
+            padding: 8px 18px;
+            text-decoration: none;
+            border-radius: 3px;
+            border: 1px solid var(--text);
+            font-weight: 500;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .product-card .btn-small:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        /* Футер */
+        footer {
+            background: #080808;
+            padding: 50px 5%;
+            text-align: center;
+            color: #555;
+            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.03);
+        }
+
+        /* Мобільна адаптація */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            nav { display: none; } /* Спрощення для мобілок */
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <div class="logo">ВАШ БРЕНД</div>
+        <div class="logo">FOMAFASAD-RGB</div>
         <nav>
-            <a href="index.html">Головна</a>
-            <a href="catalog.html">Каталог</a>
-            <a href="services.html">Послуги</a>
-            <a href="contacts.html">Контакти</a>
+            <a href="#products">Каталог</a>
+            <a href="#">Галерея</a>
+            <a href="#">Контакти</a>
         </nav>
     </header>
 
-    <section style="background: var(--primary); color: white; padding: 80px 5%; text-align: center;">
-        <h1>Надійність у кожній деталі</h1>
-        <p>Понад 20 років досвіду в будівництві та металообробці</p>
-        <a href="catalog.html" class="btn">Переглянути каталог</a>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Потужне гнуття. <span>Ідеальний фасад.</span></h1>
+            <p>Власна фабрика металовиробів для вашого даху та фасаду. Якість, за яку ми відповідаємо.</p>
+            <a href="#products" class="btn">Переглянути вироби</a>
+        </div>
     </section>
 
-    <div class="container">
-        <h2>Чому обирають нас?</h2>
-        <div class="grid">
-            <div class="card"><h3>Власне виробництво</h3><p>Виготовляємо вироби на професійних станках.</p></div>
-            <div class="card"><h3>Висотні роботи</h3><p>Маємо досвід роботи на будь-якій висоті.</p></div>
-            <div class="card"><h3>Якість матеріалів</h3><p>Тільки перевірена сталь з полімерним покриттям.</p></div>
+    <div class="products" id="products">
+        <h2>Наші Вироби</h2>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1617191519105-d0c02f0d922a?q=80&w=800" alt="Парапет">
+                <div class="product-card-content">
+                    <h3>Парапети та ковпаки</h3>
+                    <p>Надійний захист для парканів та стін даху. Будь-яка форма та колір.</p>
+                    <div class="price-wrap">
+                        <span class="price">від 250 грн/м.п.</span>
+                        <a href="#" class="btn-small">Детальніше</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800" alt="Віконний відлив">
+                <div class="product-card-content">
+                    <h3>Віконні відливи</h3>
+                    <p>Оцинкована сталь з полімерним покриттям. Чітка геометрія.</p>
+                    <div class="price-wrap">
+                        <span class="price">від 180 грн/м.п.</span>
+                        <a href="#" class="btn-small">Детальніше</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=800" alt="Спецпланка">
+                <div class="product-card-content">
+                    <h3>Спецпланки за кресленням</h3>
+                    <p>Гнуття металу за вашими розмірами на професійному станку.</p>
+                    <div class="price-wrap">
+                        <span class="price">Договірна</span>
+                        <a href="#" class="btn-small">Замовити</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <footer><p>&copy; 2026 Всі права захищені</p></footer>
+    <footer>
+        <p>&copy; 2026 FOMAFASAD-RGB. Всі права захищені.</p>
+        <p>м. Вишгород | +38 (067) 555-55-55</p>
+    </footer>
+
 </body>
 </html>
