@@ -3,41 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог виробів | FOMAFASAD-RGB</title>
+    <title>Каталог товарів | FOMAFASAD-RGB</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
         :root { --bg: #0a0a0a; --card: #141414; --accent: #e67e22; --white: #ffffff; }
-        
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #e0e0e0; margin: 0; padding-top: 80px; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: #e0e0e0; margin: 0; padding-top: 100px; }
         
         header { 
-            background: rgba(10,10,10,0.9); backdrop-filter: blur(10px);
-            padding: 15px 5%; display: flex; justify-content: space-between; 
-            align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(10,10,10,0.9); padding: 15px 5%; display: flex; 
+            justify-content: space-between; align-items: center; position: fixed; 
+            width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .logo { font-size: 1.6rem; font-weight: 900; color: var(--white); text-decoration: none; }
         nav a { color: #e0e0e0; text-decoration: none; margin-left: 20px; font-size: 14px; }
+        nav a:hover { color: var(--accent); }
 
-        .container { padding: 50px 5%; }
-        h1 { font-size: 3rem; text-align: center; color: var(--white); margin-bottom: 50px; text-transform: uppercase; }
+        .container { padding: 40px 5%; max-width: 1200px; margin: auto; }
+        h1 { font-size: 2.5rem; text-align: center; text-transform: uppercase; margin-bottom: 50px; }
         h1 span { color: var(--accent); }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .product-card { 
-            background: var(--card); border-radius: 10px; overflow: hidden; 
-            border: 1px solid rgba(255,255,255,0.03); transition: 0.3s;
+            background: var(--card); border-radius: 12px; overflow: hidden; 
+            transition: 0.3s; border: 1px solid rgba(255,255,255,0.03); 
         }
         .product-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-        .product-card img { width: 100%; height: 250px; object-fit: cover; }
+        .product-card img { width: 100%; height: 220px; object-fit: cover; }
         .info { padding: 25px; }
-        .info h3 { margin: 0 0 10px 0; color: var(--white); }
-        .price { font-size: 1.4rem; color: var(--accent); font-weight: 700; margin-bottom: 20px; }
+        .price { font-size: 1.5rem; color: var(--accent); font-weight: 700; margin: 15px 0; }
         
-        .btn-buy { 
-            display: block; background: var(--accent); color: white; 
-            text-align: center; padding: 12px; text-decoration: none; 
-            border-radius: 5px; font-weight: 700; 
+        .btn-order { 
+            display: block; background: var(--accent); color: white; text-align: center; 
+            padding: 12px; text-decoration: none; border-radius: 5px; font-weight: 700;
         }
     </style>
 </head>
@@ -53,36 +50,33 @@
 </header>
 
 <div class="container">
-    <h1>Наш <span>Асортимент</span></h1>
-    
+    <h1>Наш <span>Каталог</span></h1>
     <div class="grid">
         <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1617191519105-d0c02f0d922a?q=80&w=800" alt="Парапет">
+            <img src="https://images.unsplash.com/photo-1617191519105-d0c02f0d922a?q=80&w=800">
             <div class="info">
                 <h3>Парапетні планки</h3>
-                <p>Захист для парканів та стін. Будь-яка форма на замовлення.</p>
+                <p>Будь-які форми для парканів та дахів.</p>
                 <div class="price">від 250 грн/м.п.</div>
-                <a href="https://t.me/твій_нік" class="btn-buy">Замовити в Telegram</a>
+                <a href="contacts.html" class="btn-order">Замовити</a>
             </div>
         </div>
-
         <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800" alt="Відлив">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800">
             <div class="info">
-                <h3>Віконні відливи</h3>
-                <p>Оцинкована сталь з полімерним покриттям. Великий вибір кольорів.</p>
+                <h3>Відливи віконні</h3>
+                <p>Сталь з полімерним покриттям (RAL).</p>
                 <div class="price">від 180 грн/м.п.</div>
-                <a href="https://t.me/твій_нік" class="btn-buy">Замовити в Telegram</a>
+                <a href="contacts.html" class="btn-order">Замовити</a>
             </div>
         </div>
-
         <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=800" alt="Спецпланка">
+            <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=800">
             <div class="info">
                 <h3>Спецвироби</h3>
-                <p>Гнуття металу за вашими індивідуальними кресленнями.</p>
-                <div class="price">Ціна договірна</div>
-                <a href="https://t.me/твій_нік" class="btn-buy">Надіслати креслення</a>
+                <p>Гнуття за вашими індивідуальними кресленнями.</p>
+                <div class="price">Договірна</div>
+                <a href="contacts.html" class="btn-order">Замовити</a>
             </div>
         </div>
     </div>
