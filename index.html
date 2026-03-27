@@ -29,7 +29,6 @@
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
-
     .container { width: min(100% - 40px, var(--maxw)); margin: 0 auto; }
 
     header {
@@ -49,16 +48,12 @@
       padding: 14px 0;
       gap: 16px;
     }
-    .logo {
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      font-size: 22px;
-    }
+    .logo { font-weight: 800; letter-spacing: 0.5px; font-size: 22px; }
     .logo span { color: var(--accent); }
 
     .nav-links {
       display: flex;
-      gap: 26px;
+      gap: 22px;
       font-size: 13px;
       text-transform: uppercase;
       font-weight: 600;
@@ -68,26 +63,19 @@
 
     .menu-toggle {
       display: none;
-      width: 42px;
-      height: 42px;
+      width: 42px; height: 42px;
       border: 2px solid rgba(255,255,255,0.2);
       background: transparent;
-      border-radius: 10px;
-      color: #fff;
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
+      border-radius: 10px; color: #fff; cursor: pointer;
+      align-items: center; justify-content: center;
     }
     .menu-toggle span,
     .menu-toggle span::before,
     .menu-toggle span::after {
       content: "";
       display: block;
-      width: 20px;
-      height: 2px;
-      background: #fff;
-      transition: 0.2s;
-      position: relative;
+      width: 20px; height: 2px; background: #fff;
+      transition: 0.2s; position: relative;
     }
     .menu-toggle span::before { position: absolute; top: -6px; }
     .menu-toggle span::after { position: absolute; top: 6px; }
@@ -100,8 +88,7 @@
       background:
         linear-gradient(180deg, rgba(24,33,42,0.85), rgba(24,33,42,0.92)),
         url("https://images.unsplash.com/photo-1504917595217-d4dc5efa61df?q=80&w=1920") center/cover;
-      color: #fff;
-      text-align: center;
+      color: #fff; text-align: center;
     }
     .hero h1 {
       font-size: clamp(30px, 5vw, 56px);
@@ -119,6 +106,10 @@
       animation: fadeUp 0.8s ease-out 0.25s both;
     }
 
+    .btn, .btn-outline {
+      position: relative;
+      overflow: hidden;
+    }
     .btn {
       display: inline-block;
       background: var(--accent);
@@ -132,6 +123,15 @@
       box-shadow: 0 10px 20px rgba(255,107,0,0.3);
       animation: popIn 0.7s ease-out 0.4s both;
     }
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), transparent 45%);
+      opacity: 0;
+      transition: 0.3s;
+    }
+    .btn:hover::after { opacity: 1; animation: glow 1.2s infinite; }
     .btn:hover, .btn:focus {
       transform: translateY(-2px) scale(1.02);
       background: #e35d00;
@@ -139,10 +139,7 @@
     }
 
     section { padding: 90px 0; }
-    .section-title {
-      text-align: center;
-      margin-bottom: 46px;
-    }
+    .section-title { text-align: center; margin-bottom: 46px; }
     .section-title h2 {
       font-size: clamp(26px, 3.5vw, 36px);
       font-weight: 800;
@@ -185,20 +182,7 @@
     }
     .about-list div:hover { transform: translateY(-3px); border-color: #ffd1b0; }
 
-    .advantages {
-      background: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-    .advantages::before {
-      content: "";
-      position: absolute;
-      inset: -40% 60% auto -20%;
-      height: 300px;
-      background: radial-gradient(closest-side, rgba(255,107,0,0.15), transparent 70%);
-      animation: floatGlow 8s ease-in-out infinite;
-      pointer-events: none;
-    }
+    .advantages { background: #fff; position: relative; overflow: hidden; }
     .adv-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -213,11 +197,7 @@
       transition: 0.2s;
     }
     .adv-card:hover { transform: translateY(-6px); border-color: #ffd1b0; }
-    .adv-title {
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 6px;
-    }
+    .adv-title { font-weight: 800; color: var(--primary); margin-bottom: 6px; }
     .adv-text { color: var(--muted); font-size: 14px; }
     .adv-badge {
       display: inline-block;
@@ -229,6 +209,48 @@
       border-radius: 999px;
       margin-bottom: 10px;
     }
+
+    .process {
+      background: #fff;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+    .process-step {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid #eef0f2;
+      box-shadow: var(--shadow);
+    }
+    .process-step h4 { font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+
+    .faq {
+      background: linear-gradient(180deg, #ffffff, #f4f7fb);
+    }
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--card);
+      border: 1px solid #eef0f2;
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+    .faq-item h4 { font-weight: 800; margin-bottom: 6px; color: var(--primary); }
+    .faq-item p { color: var(--muted); font-size: 14px; }
+
+    .cta {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 70px 0;
+    }
+    .cta p { color: #cfd6df; margin-top: 8px; }
 
     .grid {
       display: grid;
@@ -320,33 +342,13 @@
 
     :focus-visible { outline: 3px solid rgba(255,107,0,0.5); outline-offset: 2px; }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: 0.7s ease;
-    }
-    .reveal.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .stagger > * {
-      opacity: 0;
-      transform: translateY(18px);
-    }
-    .stagger.in-view > * {
-      opacity: 1;
-      transform: translateY(0);
-      transition: 0.5s ease;
-    }
-    .stagger.in-view > *:nth-child(1) { transition-delay: 0.05s; }
-    .stagger.in-view > *:nth-child(2) { transition-delay: 0.12s; }
-    .stagger.in-view > *:nth-child(3) { transition-delay: 0.19s; }
-    .stagger.in-view > *:nth-child(4) { transition-delay: 0.26s; }
+    .reveal { opacity: 0; transform: translateY(26px); transition: 0.7s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes popIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
     @keyframes slideDown { from { transform: translateY(-8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    @keyframes floatGlow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(18px); } }
+    @keyframes glow { 0%,100% { transform: translateX(0); } 50% { transform: translateX(10%); } }
   </style>
 </head>
 <body>
@@ -362,7 +364,9 @@
           <a href="#home">Головна</a>
           <a href="#about">Про нас</a>
           <a href="#advantages">Переваги</a>
+          <a href="#process">Процес</a>
           <a href="#catalog">Каталог</a>
+          <a href="#faq">FAQ</a>
           <a href="#contacts">Контакти</a>
         </div>
       </nav>
@@ -381,7 +385,7 @@
     <div class="container">
       <div class="section-title">
         <h2>Про <span>нас</span></h2>
-        <p>Виробляємо якісні металовироби під проєкти будь-якої складності</p>
+        <p>Стабільна якість, точність та контроль на кожному етапі</p>
       </div>
       <div class="about-grid">
         <div class="about-card">
@@ -397,139 +401,4 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="advantages reveal" id="advantages">
-    <div class="container">
-      <div class="section-title">
-        <h2>Наші <span>Переваги</span></h2>
-        <p>Стабільна якість, точність і швидкість виконання</p>
-      </div>
-      <div class="adv-grid stagger">
-        <div class="adv-card">
-          <div class="adv-badge">Точність</div>
-          <div class="adv-title">Ідеальна геометрія</div>
-          <div class="adv-text">Сучасне обладнання для чистих згинів і точних кутів.</div>
-        </div>
-        <div class="adv-card">
-          <div class="adv-badge">Матеріали</div>
-          <div class="adv-title">Стійке покриття</div>
-          <div class="adv-text">Оцинкована сталь з полімером для довгого ресурсу.</div>
-        </div>
-        <div class="adv-card">
-          <div class="adv-badge">Швидкість</div>
-          <div class="adv-title">Оперативні строки</div>
-          <div class="adv-text">Виконуємо замовлення максимально швидко без втрати якості.</div>
-        </div>
-        <div class="adv-card">
-          <div class="adv-badge">Гнучкість</div>
-          <div class="adv-title">Будь-які розміри</div>
-          <div class="adv-text">Виготовлення за індивідуальними кресленнями клієнта.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="catalog" class="reveal">
-    <div class="container">
-      <div class="section-title">
-        <h2>Наш <span>Асортимент</span></h2>
-        <p>Якісна оцинкована сталь з полімерним покриттям</p>
-      </div>
-
-      <div class="grid stagger">
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1617191519105-d0c02f0d922a?q=80&w=800" alt="Парапетні планки">
-          <div class="card-body">
-            <h3 class="card-title">Парапетні планки</h3>
-            <p class="card-text">Захист для парканів та дахів. Надійно та естетично.</p>
-            <div class="price">від 250 ₴/м</div>
-            <a class="btn-outline" href="#contacts">Замовити</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800" alt="Віконні відливи">
-          <div class="card-body">
-            <h3 class="card-title">Віконні відливи</h3>
-            <p class="card-text">Ідеальна геометрія. Будь-який колір за каталогом RAL.</p>
-            <div class="price">від 180 ₴/м</div>
-            <a class="btn-outline" href="#contacts">Замовити</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=800" alt="Спецвироби">
-          <div class="card-body">
-            <h3 class="card-title">Спецвироби</h3>
-            <p class="card-text">Індивідуальне гнуття за вашими розмірами та кресленнями.</p>
-            <div class="price">Договірна</div>
-            <a class="btn-outline" href="#contacts">Прорахувати</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="contacts reveal" id="contacts">
-    <div class="container">
-      <div class="section-title">
-        <h2>Зв'яжіться з <span>нами</span></h2>
-        <p>Готові виконати ваше замовлення максимально швидко</p>
-      </div>
-
-      <div class="contact-wrap stagger">
-        <div class="contact-item">
-          <h3>Адреса</h3>
-          <p>Київська область</p>
-          <p>м. Вишгород / м. Ірпінь</p>
-        </div>
-        <div class="contact-item">
-          <h3>Телефон</h3>
-          <p>Пн-Сб (9:00 - 18:00)</p>
-          <a href="tel:+380675555555">+38 (067) 555-55-55</a>
-        </div>
-        <div class="contact-item">
-          <h3>Месенджери</h3>
-          <p>Надсилайте креслення для оцінки</p>
-          <a href="https://t.me/твій_нік" style="color:#4aa3df">Telegram</a>
-          <br><br>
-          <a href="viber://chat?number=%2B380675555555" style="color:#8b7bff">Viber</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2026 FOMAFASAD-RGB. Всі права захищені.
-  </footer>
-
-  <script>
-    const btn = document.querySelector(".menu-toggle");
-    const links = document.getElementById("navLinks");
-
-    btn.addEventListener("click", () => {
-      const isOpen = links.classList.toggle("is-open");
-      btn.setAttribute("aria-expanded", String(isOpen));
-    });
-
-    links.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", () => {
-        links.classList.remove("is-open");
-        btn.setAttribute("aria-expanded", "false");
-      });
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll(".reveal, .stagger").forEach(el => observer.observe(el));
-  </script>
-</body>
-</html>
+  </
