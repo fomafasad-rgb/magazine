@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -26,11 +25,13 @@
       color: var(--text);
       background: var(--bg);
       line-height: 1.6;
+      overflow-x: hidden;
     }
-    img { max-width: 100%; display: block; }
+    img { max-width: 100%; display: block; height: auto; }
     a { color: inherit; text-decoration: none; }
     .container { width: min(100% - 40px, var(--maxw)); margin: 0 auto; }
 
+    /* Шапка */
     header {
       position: fixed;
       top: 0;
@@ -39,16 +40,14 @@
       color: #fff;
       z-index: 1000;
       box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-      animation: slideDown 0.6s ease-out;
     }
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 14px 0;
-      gap: 16px;
     }
-    .logo { font-weight: 800; letter-spacing: 0.5px; font-size: 22px; }
+    .logo { font-weight: 800; letter-spacing: 0.5px; font-size: 22px; text-transform: uppercase; }
     .logo span { color: var(--accent); }
 
     .nav-links {
@@ -58,297 +57,104 @@
       text-transform: uppercase;
       font-weight: 600;
     }
-    .nav-links a { color: #fff; opacity: 0.9; transition: 0.2s; }
-    .nav-links a:hover, .nav-links a:focus { color: var(--accent); opacity: 1; }
+    .nav-links a { color: #fff; transition: 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
 
+    /* Мобільна кнопка */
     .menu-toggle {
       display: none;
-      width: 42px; height: 42px;
-      border: 2px solid rgba(255,255,255,0.2);
+      flex-direction: column;
+      gap: 5px;
       background: transparent;
-      border-radius: 10px; color: #fff; cursor: pointer;
-      align-items: center; justify-content: center;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
     }
-    .menu-toggle span,
-    .menu-toggle span::before,
-    .menu-toggle span::after {
-      content: "";
-      display: block;
-      width: 20px; height: 2px; background: #fff;
-      transition: 0.2s; position: relative;
-    }
-    .menu-toggle span::before { position: absolute; top: -6px; }
-    .menu-toggle span::after { position: absolute; top: 6px; }
+    .menu-toggle span { width: 25px; height: 3px; background: #fff; transition: 0.3s; }
 
+    /* Hero секція */
     .hero {
       min-height: 100vh;
       padding: 130px 0 70px;
-      display: grid;
-      place-items: center;
-      background:
-        linear-gradient(180deg, rgba(24,33,42,0.85), rgba(24,33,42,0.92)),
-        url("https://images.unsplash.com/photo-1504917595217-d4dc5efa61df?q=80&w=1920") center/cover;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(rgba(24,33,42,0.8), rgba(24,33,42,0.9)),
+                  url("https://images.unsplash.com/photo-1504917595217-d4dc5efa61df?q=80&w=1920") center/cover;
       color: #fff; text-align: center;
     }
-    .hero h1 {
-      font-size: clamp(30px, 5vw, 56px);
-      font-weight: 800;
-      line-height: 1.1;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      animation: fadeUp 0.8s ease-out 0.1s both;
-    }
-    .hero p {
-      max-width: 640px;
-      color: #d8dde3;
-      margin: 0 auto 28px;
-      font-size: clamp(15px, 2vw, 18px);
-      animation: fadeUp 0.8s ease-out 0.25s both;
-    }
+    .hero h1 { font-size: clamp(32px, 6vw, 60px); font-weight: 800; text-transform: uppercase; margin-bottom: 20px; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { max-width: 700px; margin: 0 auto 35px; font-size: 18px; color: #ced4da; }
 
-    .btn, .btn-outline {
-      position: relative;
-      overflow: hidden;
-    }
+    /* Кнопки з ефектом підсвічування */
     .btn {
       display: inline-block;
       background: var(--accent);
       color: #fff;
-      padding: 14px 34px;
+      padding: 16px 40px;
       border-radius: 8px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: 0.2s;
-      box-shadow: 0 10px 20px rgba(255,107,0,0.3);
-      animation: popIn 0.7s ease-out 0.4s both;
-    }
-    .btn::after {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), transparent 45%);
-      opacity: 0;
       transition: 0.3s;
-    }
-    .btn:hover::after { opacity: 1; animation: glow 1.2s infinite; }
-    .btn:hover, .btn:focus {
-      transform: translateY(-2px) scale(1.02);
-      background: #e35d00;
-      box-shadow: 0 14px 28px rgba(255,107,0,0.42);
-    }
-
-    section { padding: 90px 0; }
-    .section-title { text-align: center; margin-bottom: 46px; }
-    .section-title h2 {
-      font-size: clamp(26px, 3.5vw, 36px);
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--primary);
-    }
-    .section-title h2 span { color: var(--accent); }
-    .section-title p { color: var(--muted); margin-top: 8px; }
-
-    .about {
-      background: linear-gradient(180deg, #ffffff, #f4f7fb);
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 30px;
-      align-items: center;
-    }
-    .about-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-      border: 1px solid #eef0f2;
-    }
-    .about-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .about-list div {
-      background: #fff;
-      border: 1px solid #eef0f2;
-      border-radius: 10px;
-      padding: 12px 14px;
-      transition: 0.2s;
-    }
-    .about-list div:hover { transform: translateY(-3px); border-color: #ffd1b0; }
-
-    .advantages { background: #fff; position: relative; overflow: hidden; }
-    .adv-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 22px;
-    }
-    .adv-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 22px;
-      border: 1px solid #eef0f2;
-      box-shadow: var(--shadow);
-      transition: 0.2s;
-    }
-    .adv-card:hover { transform: translateY(-6px); border-color: #ffd1b0; }
-    .adv-title { font-weight: 800; color: var(--primary); margin-bottom: 6px; }
-    .adv-text { color: var(--muted); font-size: 14px; }
-    .adv-badge {
-      display: inline-block;
-      background: #fff3ea;
-      color: #c94d00;
-      font-weight: 800;
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      margin-bottom: 10px;
-    }
-
-    .process {
-      background: #fff;
-    }
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-    }
-    .process-step {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 20px;
-      border: 1px solid #eef0f2;
-      box-shadow: var(--shadow);
-    }
-    .process-step h4 { font-weight: 800; color: var(--primary); margin-bottom: 8px; }
-
-    .faq {
-      background: linear-gradient(180deg, #ffffff, #f4f7fb);
-    }
-    .faq-list {
-      display: grid;
-      gap: 12px;
-    }
-    .faq-item {
-      background: var(--card);
-      border: 1px solid #eef0f2;
-      border-radius: var(--radius);
-      padding: 16px 18px;
-      box-shadow: var(--shadow);
-    }
-    .faq-item h4 { font-weight: 800; margin-bottom: 6px; color: var(--primary); }
-    .faq-item p { color: var(--muted); font-size: 14px; }
-
-    .cta {
-      background: var(--primary);
-      color: #fff;
-      text-align: center;
-      padding: 70px 0;
-    }
-    .cta p { color: #cfd6df; margin-top: 8px; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 26px;
-    }
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
+      box-shadow: 0 10px 20px rgba(255,107,0,0.3);
+      position: relative;
+      z-index: 1;
       overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: 0.2s;
-      border: 1px solid #eef0f2;
-      display: flex;
-      flex-direction: column;
     }
-    .card:hover { transform: translateY(-6px); border-color: #ffd1b0; }
-    .card img { height: 220px; object-fit: cover; border-bottom: 3px solid var(--accent); }
-    .card-body { padding: 24px; text-align: center; }
-    .card-title { font-weight: 800; color: var(--primary); font-size: 20px; margin-bottom: 8px; }
-    .card-text { color: var(--muted); font-size: 14px; margin-bottom: 18px; min-height: 42px; }
-    .price { font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 18px; }
-    .btn-outline {
-      padding: 10px 26px;
-      border-radius: 8px;
-      border: 2px solid var(--accent);
-      color: var(--accent);
-      font-weight: 800;
-      text-transform: uppercase;
-      transition: 0.2s;
-      display: inline-block;
-      width: 100%;
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.5s;
     }
-    .btn-outline:hover, .btn-outline:focus { background: var(--accent); color: #fff; }
+    .btn:hover::before { left: 100%; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,107,0,0.4); }
 
-    .contacts {
-      background: var(--primary);
-      color: #fff;
-    }
-    .contacts .section-title h2 { color: #fff; }
-    .contacts .section-title p { color: #b8c0cc; }
+    /* Секції */
+    section { padding: 80px 0; }
+    .section-title { text-align: center; margin-bottom: 50px; }
+    .section-title h2 { font-size: 32px; font-weight: 800; text-transform: uppercase; color: var(--primary); }
+    .section-title h2 span { color: var(--accent); }
 
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-    .contact-item {
-      background: rgba(255,255,255,0.05);
-      padding: 28px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: 0.2s;
-    }
-    .contact-item:hover { transform: translateY(-4px); }
-    .contact-item h3 { color: var(--accent); margin-bottom: 10px; }
-    .contact-item p { color: #d3d7dc; margin-bottom: 10px; }
-    .contact-item a { font-weight: 800; font-size: 18px; }
-    .contact-item a:hover, .contact-item a:focus { color: var(--accent); }
+    /* Картки товарів */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: 0.3s; border: 1px solid #eee; }
+    .card:hover { transform: translateY(-8px); border-color: var(--accent); }
+    .card img { width: 100%; height: 240px; object-fit: cover; }
+    .card-body { padding: 25px; text-align: center; }
+    .price { font-size: 26px; font-weight: 800; color: var(--primary); margin: 15px 0; }
 
-    footer {
-      background: #111820;
-      color: #6c7480;
-      text-align: center;
-      padding: 22px 0;
-      font-weight: 600;
-      font-size: 13px;
-    }
+    /* Процес та FAQ */
+    .about-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 30px; }
+    .about-list div { background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #ddd; font-weight: 600; text-align: center; transition: 0.3s; }
+    .about-list div:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-    @media (max-width: 980px) {
-      .about-grid { grid-template-columns: 1fr; }
-    }
+    /* Контакти */
+    .contacts { background: var(--primary); color: #fff; }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .contact-item { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+    .contact-item h3 { color: var(--accent); margin-bottom: 15px; }
+    .contact-item a { font-size: 20px; font-weight: 800; display: block; margin-top: 10px; }
+
+    footer { background: #111; color: #666; text-align: center; padding: 20px; font-size: 14px; }
+
+    /* Мобільна адаптація */
     @media (max-width: 860px) {
-      .menu-toggle { display: inline-flex; }
+      .menu-toggle { display: flex; }
       .nav-links {
         display: none;
+        position: absolute;
+        top: 100%; left: 0; width: 100%;
+        background: var(--primary);
         flex-direction: column;
-        gap: 12px;
-        background: #121a22;
-        padding: 14px;
-        border-radius: 10px;
-        width: 100%;
+        padding: 20px;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.1);
       }
-      .nav-links.is-open { display: flex; }
+      .nav-links.active { display: flex; }
     }
-    @media (max-width: 600px) {
-      section { padding: 70px 0; }
-    }
-
-    :focus-visible { outline: 3px solid rgba(255,107,0,0.5); outline-offset: 2px; }
-
-    .reveal { opacity: 0; transform: translateY(26px); transition: 0.7s ease; }
-    .reveal.in-view { opacity: 1; transform: translateY(0); }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes popIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
-    @keyframes slideDown { from { transform: translateY(-8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    @keyframes glow { 0%,100% { transform: translateX(0); } 50% { transform: translateX(10%); } }
   </style>
 </head>
 <body>
@@ -356,17 +162,14 @@
   <header>
     <div class="container nav">
       <div class="logo">FOMAFASAD<span>RGB</span></div>
-      <button class="menu-toggle" aria-label="Відкрити меню" aria-expanded="false">
-        <span></span>
+      <button class="menu-toggle" id="menuBtn">
+        <span></span><span></span><span></span>
       </button>
-      <nav aria-label="Головна навігація">
-        <div class="nav-links" id="navLinks">
+      <nav>
+        <div class="nav-links" id="navMenu">
           <a href="#home">Головна</a>
           <a href="#about">Про нас</a>
-          <a href="#advantages">Переваги</a>
-          <a href="#process">Процес</a>
           <a href="#catalog">Каталог</a>
-          <a href="#faq">FAQ</a>
           <a href="#contacts">Контакти</a>
         </div>
       </nav>
@@ -375,30 +178,106 @@
 
   <section class="hero" id="home">
     <div class="container">
-      <h1>Виробництво металовиробів</h1>
-      <p>Професійне гнуття. Парапети, відливи та спецпланки будь-якої складності за вашими кресленнями.</p>
-      <a class="btn" href="#catalog">Дивитись каталог</a>
+      <h1>Якісне гнуття <span>металу</span></h1>
+      <p>Виготовлення парапетів, відливів та спецпланок за вашими розмірами. Професійні станки Tapco та швидке виконання.</p>
+      <a href="#catalog" class="btn">Замовити розрахунок</a>
     </div>
   </section>
 
-  <section class="about reveal" id="about">
+  <section id="about">
     <div class="container">
       <div class="section-title">
-        <h2>Про <span>нас</span></h2>
-        <p>Стабільна якість, точність та контроль на кожному етапі</p>
+        <h2>Чому обирають <span>нас</span></h2>
       </div>
-      <div class="about-grid">
-        <div class="about-card">
-          <h3 style="margin-bottom:10px;color:var(--primary);font-weight:800;">FOMAFASAD-RGB</h3>
-          <p>Ми спеціалізуємося на гнутті оцинкованої сталі з полімерним покриттям. Виготовляємо парапетні планки, відливи, нащільники та індивідуальні елементи за кресленнями клієнта.</p>
-          <p style="margin-top:10px;color:var(--muted);">Гарантуємо точну геометрію, акуратні згини та оперативне виконання замовлень.</p>
+      <div class="about-list">
+        <div>Точна геометрія виробів</div>
+        <div>Будь-який колір RAL</div>
+        <div>Оцинкована сталь 0.45-0.7мм</div>
+        <div>Виготовлення за 24 години</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalog" style="background: #fff;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Наш <span>Каталог</span></h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1617191519105-d0c02f0d922a?q=80&w=800" alt="Парапет" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title">Парапетні планки</h3>
+            <p>Захист для парканів та стін. Будь-яка форма.</p>
+            <div class="price">від 250 ₴/м</div>
+            <a href="#contacts" class="btn" style="padding: 10px 20px; font-size: 14px;">Замовити</a>
+          </div>
         </div>
-        <div class="about-list">
-          <div>Матеріал: оцинкована сталь з полімером</div>
-          <div>Будь-який колір за каталогом RAL</div>
-          <div>Індивідуальні креслення та розміри</div>
-          <div>Виробництво під ключ</div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800" alt="Відлив" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title">Віконні відливи</h3>
+            <p>Сталь з полімерним покриттям. Чіткі кути.</p>
+            <div class="price">від 180 ₴/м</div>
+            <a href="#contacts" class="btn" style="padding: 10px 20px; font-size: 14px;">Замовити</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=800" alt="Спецпланка" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title">Спецвироби</h3>
+            <p>Гнуття за вашими індивідуальними кресленнями.</p>
+            <div class="price">Договірна</div>
+            <a href="#contacts" class="btn" style="padding: 10px 20px; font-size: 14px;">Прорахувати</a>
+          </div>
         </div>
       </div>
     </div>
-  </
+  </section>
+
+  <section class="contacts" id="contacts">
+    <div class="container">
+      <div class="section-title">
+        <h2 style="color: #fff;">Зв'яжіться з <span>нами</span></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h3>📍 Виробництво</h3>
+          <p>м. Вишгород / м. Ірпінь</p>
+        </div>
+        <div class="contact-item">
+          <h3>📞 Телефон</h3>
+          <a href="tel:+380675555555">+38 (067) 555-55-55</a>
+        </div>
+        <div class="contact-item">
+          <h3>💬 Месенджери</h3>
+          <a href="https://t.me/твій_нік" style="color:#0088cc;">Telegram</a>
+          <a href="viber://chat?number=%2B380675555555" style="color:#7360f2;">Viber</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 FOMAFASAD-RGB. Працюємо на результат.
+  </footer>
+
+  <script>
+    // Скрипт для мобільного меню
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    menuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Закриття меню при кліку на посилання
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
