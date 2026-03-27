@@ -34,29 +34,50 @@
     /* Шапка */
     header {
       position: fixed;
-      top: 0; width: 100%;
+      top: 0;
+      width: 100%;
       background: var(--primary);
-      color: #fff; z-index: 1000;
+      color: #fff;
+      z-index: 1000;
       box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     }
     .nav {
-      display: flex; align-items: center; justify-content: space-between; padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
     }
     .logo { font-weight: 800; letter-spacing: 0.5px; font-size: 22px; text-transform: uppercase; }
     .logo span { color: var(--accent); }
 
-    .nav-links { display: flex; gap: 22px; font-size: 13px; text-transform: uppercase; font-weight: 600; }
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
     .nav-links a { color: #fff; transition: 0.3s; }
     .nav-links a:hover { color: var(--accent); }
 
+    /* Мобільна кнопка */
     .menu-toggle {
-      display: none; flex-direction: column; gap: 5px; background: transparent; border: none; cursor: pointer;
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
     }
     .menu-toggle span { width: 25px; height: 3px; background: #fff; transition: 0.3s; }
 
-    /* Hero */
+    /* Hero секція */
     .hero {
-      min-height: 100vh; padding: 130px 0 70px; display: flex; align-items: center;
+      min-height: 100vh;
+      padding: 130px 0 70px;
+      display: flex;
+      align-items: center;
       background: linear-gradient(rgba(24,33,42,0.8), rgba(24,33,42,0.9)),
                   url("https://images.unsplash.com/photo-1504917595217-d4dc5efa61df?q=80&w=1920") center/cover;
       color: #fff; text-align: center;
@@ -65,44 +86,67 @@
     .hero h1 span { color: var(--accent); }
     .hero p { max-width: 700px; margin: 0 auto 35px; font-size: 18px; color: #ced4da; }
 
+    /* Кнопки з ефектом підсвічування */
     .btn {
-      display: inline-block; background: var(--accent); color: #fff; padding: 16px 40px;
-      border-radius: 8px; font-weight: 800; text-transform: uppercase; transition: 0.3s;
-      box-shadow: 0 10px 20px rgba(255,107,0,0.3); position: relative; z-index: 1; overflow: hidden;
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-weight: 800;
+      text-transform: uppercase;
+      transition: 0.3s;
+      box-shadow: 0 10px 20px rgba(255,107,0,0.3);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
     }
     .btn::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: 0.5s;
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.5s;
     }
     .btn:hover::before { left: 100%; }
     .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,107,0,0.4); }
 
+    /* Секції */
     section { padding: 80px 0; }
     .section-title { text-align: center; margin-bottom: 50px; }
     .section-title h2 { font-size: 32px; font-weight: 800; text-transform: uppercase; color: var(--primary); }
     .section-title h2 span { color: var(--accent); }
 
-    /* Каталог */
+    /* Картки товарів */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
     .card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: 0.3s; border: 1px solid #eee; }
     .card:hover { transform: translateY(-8px); border-color: var(--accent); }
-    .card img { width: 100%; height: 240px; object-fit: cover; border-bottom: 3px solid var(--accent); }
+    .card img { width: 100%; height: 240px; object-fit: cover; }
     .card-body { padding: 25px; text-align: center; }
     .price { font-size: 26px; font-weight: 800; color: var(--primary); margin: 15px 0; }
+
+    /* Процес та FAQ */
+    .about-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 30px; }
+    .about-list div { background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #ddd; font-weight: 600; text-align: center; transition: 0.3s; }
+    .about-list div:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
     /* Калькулятор */
     .calc-box {
         background: var(--primary); padding: 40px; border-radius: var(--radius);
         color: white; max-width: 900px; margin: 0 auto; box-shadow: var(--shadow);
     }
-    .calc-row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
+    .calc-row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 25px; }
     .calc-col { flex: 1; min-width: 200px; }
     .calc-col label { display: block; margin-bottom: 10px; font-size: 14px; font-weight: 600; color: #bbb; }
     .calc-col input, .calc-col select {
         width: 100%; padding: 12px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.2);
-        background: rgba(255,255,255,0.05); color: white; font-size: 16px; font-family: inherit;
+        background: rgba(255,255,255,0.05); color: white; font-size: 15px; font-family: inherit;
     }
-    .calc-result { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .calc-col select option { background: var(--primary); color: white; }
+    .calc-result { text-align: center; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); }
     #totalPrice { font-size: 48px; font-weight: 800; color: var(--accent); margin: 10px 0; }
 
     /* Контакти */
@@ -114,11 +158,18 @@
 
     footer { background: #111; color: #666; text-align: center; padding: 20px; font-size: 14px; }
 
+    /* Мобільна адаптація */
     @media (max-width: 860px) {
       .menu-toggle { display: flex; }
       .nav-links {
-        display: none; position: absolute; top: 100%; left: 0; width: 100%;
-        background: var(--primary); flex-direction: column; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1);
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; width: 100%;
+        background: var(--primary);
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.1);
       }
       .nav-links.active { display: flex; }
     }
@@ -135,9 +186,9 @@
       <nav>
         <div class="nav-links" id="navMenu">
           <a href="#home">Головна</a>
+          <a href="#about">Про нас</a>
           <a href="#catalog">Каталог</a>
-          <a href="#calculator">Калькулятор</a>
-          <a href="#contacts">Контакти</a>
+          <a href="#calculator">Калькулятор</a> <a href="#contacts">Контакти</a>
         </div>
       </nav>
     </div>
@@ -147,7 +198,21 @@
     <div class="container">
       <h1>Якісне гнуття <span>металу</span></h1>
       <p>Виготовлення парапетів, відливів та спецпланок за вашими розмірами. Професійні станки Tapco та швидке виконання.</p>
-      <a href="#calculator" class="btn">Розрахувати вартість</a>
+      <a href="#catalog" class="btn">Замовити розрахунок</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Чому обирають <span>нас</span></h2>
+      </div>
+      <div class="about-list">
+        <div>Точна геометрія виробів</div>
+        <div>Будь-який колір RAL</div>
+        <div>Оцинкована сталь 0.45-0.7мм</div>
+        <div>Виготовлення за 24 години</div>
+      </div>
     </div>
   </section>
 
@@ -192,7 +257,7 @@
     <div class="container">
         <div class="section-title">
             <h2>Онлайн <span>Калькулятор</span></h2>
-            <p>Оберіть параметри для миттєвого розрахунку</p>
+            <p>Вкажіть розміри, товщину та колір для точного прорахунку</p>
         </div>
         <div class="calc-box">
             <div class="calc-row">
@@ -209,36 +274,47 @@
                     <label>Колір (RAL)</label>
                     <select id="prodColor">
                         <option value="7024">7024 (Графіт)</option>
-                        <option value="8017">8017 (Коричневий)</option>
-                        <option value="9003">9003 (Білий)</option>
+                        <option value="8017">8017 (Шоколад)</option>
+                        <option value="8019">8019 (Темно-коричневий)</option>
+                        <option value="9005">9005 (Чорний)</option>
+                        <option value="3005">3005 (Вишневий)</option>
                         <option value="6005">6005 (Зелений)</option>
-                        <option value="0000">Оцинковка (без кольору)</option>
+                        <option value="9003">9003 (Білий)</option>
+                        <option value="Цинк">Оцинковка (Без кольору)</option>
+                    </select>
+                </div>
+                <div class="calc-col">
+                    <label>Товщина металу</label>
+                    <select id="prodThickness">
+                        <option value="1">0.45 мм (Стандарт)</option>
+                        <option value="1.15">0.50 мм (Посилений)</option>
+                        <option value="1.4">0.70 мм (Промисловий)</option>
                     </select>
                 </div>
             </div>
             <div class="calc-row">
                 <div class="calc-col">
                     <label>Довжина (метрів)</label>
-                    <input type="number" id="len" value="1" step="0.1">
+                    <input type="number" id="len" value="1" step="0.1" min="0.1">
                 </div>
                 <div class="calc-col">
                     <label>Розгортка (ширина в мм)</label>
-                    <input type="number" id="width" value="250" step="10">
+                    <input type="number" id="width" value="250" step="10" min="50">
                 </div>
             </div>
             <div class="calc-result">
                 <span>Орієнтовна вартість:</span>
                 <div id="totalPrice">0 ₴</div>
                 <button onclick="sendToTelegram()" class="btn">Замовити розрахунок в Telegram</button>
+                <p style="margin-top: 15px; font-size: 13px; color: #888;">*Ціна є орієнтовною та може змінюватись залежно від складності згинів та наявності металу.</p>
             </div>
         </div>
     </div>
   </section>
-
   <section class="contacts" id="contacts">
     <div class="container">
       <div class="section-title">
-        <h2 style="color: #fff;">Наші <span>Контакти</span></h2>
+        <h2 style="color: #fff;">Зв'яжіться з <span>нами</span></h2>
       </div>
       <div class="contact-grid">
         <div class="contact-item">
@@ -259,38 +335,65 @@
   </section>
 
   <footer>
-    &copy; 2026 FOMAFASAD-RGB. Працюємо надійно.
+    &copy; 2026 FOMAFASAD-RGB. Працюємо на результат.
   </footer>
 
   <script>
-    // Мобільне меню
+    // Скрипт для мобільного меню
     const menuBtn = document.getElementById('menuBtn');
     const navMenu = document.getElementById('navMenu');
-    menuBtn.addEventListener('click', () => navMenu.classList.toggle('active'));
 
-    // Калькулятор
+    menuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Закриття меню при кліку на посилання
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // ДОДАНО: Скрипт для калькулятора
     const pType = document.getElementById('prodType');
     const pColor = document.getElementById('prodColor');
+    const pThickness = document.getElementById('prodThickness');
     const pLen = document.getElementById('len');
     const pWidth = document.getElementById('width');
     const tPrice = document.getElementById('totalPrice');
 
     function calculate() {
-        let pricePerM2 = parseFloat(pType.value);
-        let length = parseFloat(pLen.value);
-        let width = parseFloat(pWidth.value) / 1000;
-        let total = Math.ceil(pricePerM2 * length * width);
-        if (total < 50 && total > 0) total = 50; 
+        let basePrice = parseFloat(pType.value);
+        let thicknessMultiplier = parseFloat(pThickness.value);
+        let length = parseFloat(pLen.value) || 0;
+        let width = (parseFloat(pWidth.value) || 0) / 1000;
+        
+        let total = Math.ceil(basePrice * thicknessMultiplier * length * width);
+        if (total < 100 && total > 0) total = 100; 
+        
         tPrice.innerText = total + " ₴";
     }
 
-    [pType, pColor, pLen, pWidth].forEach(el => el.addEventListener('input', calculate));
-    calculate();
+    [pType, pColor, pThickness, pLen, pWidth].forEach(el => el.addEventListener('input', calculate));
+    calculate(); // Запуск при завантаженні
 
     function sendToTelegram() {
-        let msg = `Замовлення з сайту DigitalBud:%0AВиріб: ${pType.options[pType.selectedIndex].text}%0AКолір RAL: ${pColor.value}%0AДовжина: ${pLen.value}м%0AШирина: ${pWidth.value}мм%0AСума: ${tPrice.innerText}`;
+        let productName = pType.options[pType.selectedIndex].text;
+        let thicknessName = pThickness.options[pThickness.selectedIndex].text;
+        
+        let msg = `🔥 Нове замовлення з сайту (Прорахунок):%0A` +
+                  `------------------------%0A` +
+                  `🏗 Виріб: ${productName}%0A` +
+                  `📏 Товщина: ${thicknessName}%0A` +
+                  `🎨 Колір RAL: ${pColor.value}%0A` +
+                  `📐 Довжина: ${pLen.value} м%0A` +
+                  `↔️ Розгортка: ${pWidth.value} мм%0A` +
+                  `------------------------%0A` +
+                  `💰 Попередня сума: ${tPrice.innerText}`;
+                  
         window.location.href = `https://t.me/твій_нік?text=${msg}`; // ЗАМІНИ 'твій_нік' НА СВІЙ
     }
   </script>
+
 </body>
 </html>
