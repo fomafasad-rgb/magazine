@@ -1,399 +1,350 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GBUD.DIGITAL | Цех металовиробів</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeonForge — Майбутнє твоєї цифри</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
-    :root {
-      --primary: #18212a;
-      --accent: #ff6b00;
-      --bg: #f5f7f9;
-      --text: #2f3439;
-      --muted: #6b7280;
-      --card: #ffffff;
-      --shadow: 0 12px 30px rgba(0,0,0,0.08);
-      --radius: 12px;
-      --maxw: 1200px;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+    
+    body { font-family: 'Inter', sans-serif; }
+    .heading { font-family: 'Space Grotesk', sans-serif; }
+
+    .hero-bg {
+      background: radial-gradient(circle at 30% 20%, rgba(167,139,250,0.25), transparent 50%),
+                  radial-gradient(circle at 70% 80%, rgba(236,72,153,0.2), transparent 50%),
+                  #0a0a0a;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Montserrat", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
-      overflow-x: hidden;
+    .glass { 
+      background: rgba(255,255,255,0.06); 
+      backdrop-filter: blur(16px); 
+      border: 1px solid rgba(255,255,255,0.08); 
     }
-    img { max-width: 100%; display: block; height: auto; }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(100% - 40px, var(--maxw)); margin: 0 auto; }
 
-    /* Шапка */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--primary);
-      color: #fff;
-      z-index: 1000;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-    }
-    .logo { font-weight: 800; letter-spacing: 0.5px; font-size: 22px; text-transform: uppercase; }
-    .logo span { color: var(--accent); }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      font-size: 13px;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .nav-links a { color: #fff; transition: 0.3s; }
-    .nav-links a:hover { color: var(--accent); }
-
-    /* Мобільна кнопка */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 5px;
-    }
-    .menu-toggle span { width: 25px; height: 3px; background: #fff; transition: 0.3s; }
-
-    /* Hero секція */
-    .hero {
-      min-height: 100vh;
-      padding: 130px 0 70px;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(rgba(24,33,42,0.8), rgba(24,33,42,0.9)),
-                  url("https://images.unsplash.com/photo-1504917595217-d4dc5efa61df?q=80&w=1920") center/cover;
-      color: #fff; text-align: center;
-    }
-    .hero h1 { font-size: clamp(32px, 6vw, 60px); font-weight: 800; text-transform: uppercase; margin-bottom: 20px; }
-    .hero h1 span { color: var(--accent); }
-    .hero p { max-width: 700px; margin: 0 auto 35px; font-size: 18px; color: #ced4da; }
-
-    /* Кнопки з ефектом підсвічування */
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: 16px 40px;
-      border-radius: 8px;
-      font-weight: 800;
-      text-transform: uppercase;
-      transition: 0.3s;
-      box-shadow: 0 10px 20px rgba(255,107,0,0.3);
-      position: relative;
-      z-index: 1;
-      overflow: hidden;
-      border: none;
-      cursor: pointer;
-    }
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: 0.5s;
-    }
-    .btn:hover::before { left: 100%; }
-    .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,107,0,0.4); }
-
-    /* Секції */
-    section { padding: 80px 0; }
-    .section-title { text-align: center; margin-bottom: 50px; }
-    .section-title h2 { font-size: 32px; font-weight: 800; text-transform: uppercase; color: var(--primary); }
-    .section-title h2 span { color: var(--accent); }
-
-    /* Картки товарів */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: 0.3s; border: 1px solid #eee; }
-    .card:hover { transform: translateY(-8px); border-color: var(--accent); }
-    .card img { width: 100%; height: 240px; object-fit: cover; }
-    .card-body { padding: 25px; text-align: center; }
-    .price { font-size: 26px; font-weight: 800; color: var(--primary); margin: 15px 0; }
-
-    /* Процес та FAQ */
-    .about-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 30px; }
-    .about-list div { background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #ddd; font-weight: 600; text-align: center; transition: 0.3s; }
-    .about-list div:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-
-    /* Калькулятор */
-    .calc-box {
-        background: var(--primary); padding: 40px; border-radius: var(--radius);
-        color: white; max-width: 900px; margin: 0 auto; box-shadow: var(--shadow);
-    }
-    .calc-row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 25px; }
-    .calc-col { flex: 1; min-width: 200px; }
-    .calc-col label { display: block; margin-bottom: 10px; font-size: 14px; font-weight: 600; color: #bbb; }
-    .calc-col input, .calc-col select {
-        width: 100%; padding: 12px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.2);
-        background: rgba(255,255,255,0.05); color: white; font-size: 15px; font-family: inherit;
-    }
-    .calc-col select option { background: var(--primary); color: white; }
-    .calc-result { text-align: center; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); }
-    #totalPrice { font-size: 48px; font-weight: 800; color: var(--accent); margin: 10px 0; }
-
-    /* Контакти */
-    .contacts { background: var(--primary); color: #fff; }
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .contact-item { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
-    .contact-item h3 { color: var(--accent); margin-bottom: 15px; }
-    .contact-item a { font-size: 20px; font-weight: 800; display: block; margin-top: 10px; }
-
-    footer { background: #111; color: #666; text-align: center; padding: 20px; font-size: 14px; }
-
-    /* Мобільна адаптація */
-    @media (max-width: 860px) {
-      .menu-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%; left: 0; width: 100%;
-        background: var(--primary);
-        flex-direction: column;
-        padding: 20px;
-        text-align: center;
-        border-top: 1px solid rgba(255,255,255,0.1);
-      }
-      .nav-links.active { display: flex; }
-    }
+    .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card-hover:hover { transform: translateY(-12px) scale(1.03); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4); }
   </style>
 </head>
-<body>
+<body class="bg-zinc-950 text-zinc-100">
 
-  <header>
-    <div class="container nav">
-      <div class="logo">GBUD.DIGITAL<span>RGB</span></div>
-      <button class="menu-toggle" id="menuBtn">
-        <span></span><span></span><span></span>
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="text-3xl font-bold heading tracking-tighter bg-gradient-to-r from-violet-400 to-fuchsia-500 bg-clip-text text-transparent">NeonForge</div>
+      
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="#features" class="hover:text-violet-400 transition">Можливості</a>
+        <a href="#projects" class="hover:text-violet-400 transition">Проекти</a>
+        <a href="#pricing" class="hover:text-violet-400 transition">Ціни</a>
+        <a href="#testimonials" class="hover:text-violet-400 transition">Відгуки</a>
+        <a href="#faq" class="hover:text-violet-400 transition">FAQ</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button onclick="toggleTheme()" id="theme-btn" class="p-3 rounded-2xl hover:bg-white/10 transition">
+          <i class="fa-solid fa-moon text-xl"></i>
+        </button>
+        <a href="#contact" class="px-7 py-3 bg-violet-600 hover:bg-violet-700 rounded-3xl font-semibold transition">Почати проект</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-10">
+        <div class="inline-flex items-center gap-3 bg-white/10 px-6 py-3 rounded-3xl text-sm">
+          <span class="animate-pulse w-2 h-2 bg-emerald-400 rounded-full"></span>
+          Новий реліз 2026 — AI інтеграції
+        </div>
+
+        <h1 class="text-6xl lg:text-7xl font-bold heading leading-none tracking-tighter">
+          Ми створюємо цифрові продукти,<br>які <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400">змішують реальність</span>
+        </h1>
+
+        <p class="text-2xl text-zinc-400 max-w-lg">
+          Сучасні сайти, веб-додатки та бренди для компаній, які не хочуть бути як усі.
+        </p>
+
+        <div class="flex flex-wrap gap-5">
+          <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+            class="px-10 py-5 text-lg font-semibold bg-white text-black rounded-3xl hover:scale-105 active:scale-95 transition flex items-center gap-3">
+            Обговорити твій проект
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button onclick="window.scrollTo({top: document.getElementById('projects').offsetTop - 100, behavior: 'smooth'})"
+            class="px-10 py-5 text-lg font-medium border border-white/30 hover:border-white/70 rounded-3xl transition">
+            Переглянути роботи
+          </button>
+        </div>
+
+        <div class="flex items-center gap-12 text-sm">
+          <div><span class="text-emerald-400 font-semibold">120+</span> проектів</div>
+          <div><span class="text-emerald-400 font-semibold">98%</span> повторних клієнтів</div>
+          <div>Київ • Європа • США</div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-violet-500/30 to-pink-500/30 rounded-[4rem] blur-3xl"></div>
+        <img src="https://picsum.photos/id/1015/900/620" alt="Product preview" 
+             class="rounded-3xl shadow-2xl border border-white/10 relative z-10 w-full">
+        <div class="absolute -bottom-6 -right-6 glass p-6 rounded-3xl text-center">
+          <div class="text-4xl font-bold text-emerald-400">1.2s</div>
+          <div class="text-sm text-zinc-400">Середній час завантаження</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div><div class="text-5xl font-bold text-violet-400">100</div><div class="text-zinc-400">Core Web Vitals</div></div>
+    <div><div class="text-5xl font-bold text-violet-400">4.98</div><div class="text-zinc-400">Середня оцінка</div></div>
+    <div><div class="text-5xl font-bold text-violet-400">24</div><div class="text-zinc-400">Країни клієнтів</div></div>
+    <div><div class="text-5xl font-bold text-violet-400">14</div><div class="text-zinc-400">Днів — середній термін</div></div>
+  </div>
+
+  <!-- Features -->
+  <section id="features" class="py-24 bg-zinc-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-bold heading">Все, що потрібно для успіху</h2>
+        <p class="mt-4 text-xl text-zinc-400">Від ідеї до запуску — з сучасними технологіями</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="glass p-10 rounded-3xl card-hover">
+          <div class="text-5xl mb-6">⚡</div>
+          <h3 class="text-3xl font-semibold mb-4">Блискавична швидкість</h3>
+          <p class="text-zinc-400">Tailwind v4 + Oxide engine. 100/100 Lighthouse за замовчуванням.</p>
+        </div>
+        <div class="glass p-10 rounded-3xl card-hover">
+          <div class="text-5xl mb-6">🎨</div>
+          <h3 class="text-3xl font-semibold mb-4">Преміум дизайн</h3>
+          <p class="text-zinc-400">Мікроанімації, 3D трансформи, glassmorphism та ідеальна типографіка.</p>
+        </div>
+        <div class="glass p-10 rounded-3xl card-hover">
+          <div class="text-5xl mb-6">🤖</div>
+          <h3 class="text-3xl font-semibold mb-4">AI інтеграції</h3>
+          <p class="text-zinc-400">Чат-боти, генерація контенту, персоналізація — готові рішення.</p>
+        </div>
+        <div class="glass p-10 rounded-3xl card-hover">
+          <div class="text-5xl mb-6">📱</div>
+          <h3 class="text-3xl font-semibold mb-4">Повна адаптивність</h3>
+          <p class="text-zinc-400">Mobile-first + PWA. Ідеально працює на всіх пристроях.</p>
+        </div>
+        <div class="glass p-10 rounded-3xl card-hover">
+          <div class="text-5xl mb-6">🔒</div>
+          <h3 class="text-3xl font-semibold mb-4">SEO та безпека</h3>
+          <p class="text-zinc-400">Автоматична оптимізація, доступність та захист даних.</p>
+        </div>
+        <div class="glass p-10 rounded-3xl card-hover">
+          <div class="text-5xl mb-6">🚀</div>
+          <h3 class="text-3xl font-semibold mb-4">Швидкий запуск</h3>
+          <p class="text-zinc-400">Від ТЗ до релізу — від 10 до 30 днів залежно від складності.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-5xl font-bold heading text-center mb-16">Останні проекти</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="group relative overflow-hidden rounded-3xl">
+          <img src="https://picsum.photos/id/201/600/400" class="w-full h-full object-cover transition group-hover:scale-110 duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+            <div>
+              <div class="text-sm uppercase tracking-widest text-violet-400">E-commerce</div>
+              <div class="text-2xl font-semibold">LuxeStore — онлайн бутик</div>
+            </div>
+          </div>
+        </div>
+        <div class="group relative overflow-hidden rounded-3xl">
+          <img src="https://picsum.photos/id/237/600/400" class="w-full h-full object-cover transition group-hover:scale-110 duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+            <div>
+              <div class="text-sm uppercase tracking-widest text-violet-400">SaaS</div>
+              <div class="text-2xl font-semibold">TaskFlow — управління командами</div>
+            </div>
+          </div>
+        </div>
+        <div class="group relative overflow-hidden rounded-3xl">
+          <img src="https://picsum.photos/id/870/600/400" class="w-full h-full object-cover transition group-hover:scale-110 duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+            <div>
+              <div class="text-sm uppercase tracking-widest text-violet-400">Фінтех</div>
+              <div class="text-2xl font-semibold">CryptoGuard — крипто гаманець</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-24 bg-zinc-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-5xl font-bold heading">Прозорі ціни</h2>
+        <p class="text-zinc-400 mt-3">Обери пакет, який підходить саме тобі</p>
+      </div>
+
+      <div class="flex justify-center mb-10">
+        <div class="glass rounded-3xl p-1 flex">
+          <button onclick="switchPricing(0)" id="btn-month" class="px-8 py-3 rounded-3xl font-medium transition">Місяць</button>
+          <button onclick="switchPricing(1)" id="btn-year" class="px-8 py-3 rounded-3xl font-medium transition bg-white text-black">Рік (-30%)</button>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Starter -->
+        <div class="glass p-10 rounded-3xl text-center">
+          <h3 class="text-2xl font-semibold mb-2">Starter</h3>
+          <div id="price-0" class="text-6xl font-bold mb-8">15 000 ₴<span class="text-base font-normal text-zinc-400">/міс</span></div>
+          <ul class="space-y-4 text-left mb-10">
+            <li>✓ Лендінг або сайт-візитка</li>
+            <li>✓ Адаптивний дизайн</li>
+            <li>✓ Базова SEO</li>
+            <li>✓ 1 місяць підтримки</li>
+          </ul>
+          <button class="w-full py-4 border border-white/30 hover:bg-white/10 rounded-3xl transition">Обрати</button>
+        </div>
+
+        <!-- Pro (popular) -->
+        <div class="glass p-10 rounded-3xl text-center ring-2 ring-violet-500 relative">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-violet-600 text-white text-xs px-6 py-1 rounded-full">Найпопулярніший</div>
+          <h3 class="text-2xl font-semibold mb-2">Pro</h3>
+          <div id="price-1" class="text-6xl font-bold mb-8">45 000 ₴<span class="text-base font-normal text-zinc-400">/міс</span></div>
+          <ul class="space-y-4 text-left mb-10">
+            <li>✓ Повноцінний сайт або веб-додаток</li>
+            <li>✓ Анімації та мікро-взаємодії</li>
+            <li>✓ Інтеграції (CRM, платежі)</li>
+            <li>✓ 3 місяці підтримки</li>
+            <li>✓ AI інструменти</li>
+          </ul>
+          <button class="w-full py-4 bg-violet-600 hover:bg-violet-700 rounded-3xl font-semibold transition">Обрати Pro</button>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="glass p-10 rounded-3xl text-center">
+          <h3 class="text-2xl font-semibold mb-2">Enterprise</h3>
+          <div id="price-2" class="text-6xl font-bold mb-8">120 000 ₴<span class="text-base font-normal text-zinc-400">/міс</span></div>
+          <ul class="space-y-4 text-left mb-10">
+            <li>✓ Складний продукт / SaaS</li>
+            <li>✓ Кастомний дизайн</li>
+            <li>✓ Повна інфраструктура</li>
+            <li>✓ 12 місяців підтримки</li>
+            <li>✓ Виділений менеджер</li>
+          </ul>
+          <button class="w-full py-4 border border-white/30 hover:bg-white/10 rounded-3xl transition">Обрати</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-24">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-5xl font-bold heading mb-16">Що кажуть клієнти</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass p-8 rounded-3xl text-left">
+          <div class="flex gap-1 text-amber-400 mb-6">★★★★★</div>
+          <p class="italic">"NeonForge зробили нам сайт, який перевершив усі очікування. Конверсія зросла в 4 рази!"</p>
+          <div class="mt-8 flex items-center gap-4">
+            <img src="https://picsum.photos/id/64/60/60" class="w-12 h-12 rounded-2xl">
+            <div>
+              <div class="font-semibold">Олена Коваленко</div>
+              <div class="text-sm text-zinc-400">Засновниця LuxeStore</div>
+            </div>
+          </div>
+        </div>
+        <!-- Додай ще 2-3 відгуки аналогічно, якщо потрібно -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-24 bg-zinc-900">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-5xl font-bold heading text-center mb-12">Часті питання</h2>
+      <div class="space-y-6">
+        **Summary:**
+Скільки часу займає створення сайту?
+          <p class="mt-4 text-zinc-400">Від 10 днів для простого лендінгу до 6-8 тижнів для складного веб-додатку.</p>
+        **Summary:**
+Чи працюєте ви з іноземними клієнтами?
+          <p class="mt-4 text-zinc-400">Так, більшість наших клієнтів — з Європи та США.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section id="contact" class="py-32 text-center bg-gradient-to-b from-transparent via-violet-950/30 to-transparent">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-6xl font-bold heading mb-6">Готові до старту?</h2>
+      <p class="text-2xl text-zinc-400 mb-12">Напиши нам — і вже через кілька днів ми покажемо перші макети.</p>
+      <button onclick="alert('Дякуємо! Форма відправлена (демо версія). У реальному проекті тут буде інтеграція з Telegram / Email / Tilda form тощо)')"
+        class="px-16 py-7 text-2xl font-semibold bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-3xl hover:scale-105 transition">
+        Почати співпрацю зараз →
       </button>
-      <nav>
-        <div class="nav-links" id="navMenu">
-          <a href="#home">Головна</a>
-          <a href="#about">Про нас</a>
-          <a href="#catalog">Каталог</a>
-          <a href="#calculator">Калькулятор</a> <a href="#contacts">Контакти</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero" id="home">
-    <div class="container">
-      <h1>Якісне гнуття <span>металу</span></h1>
-      <p>Виготовлення парапетів, відливів та спецпланок за вашими розмірами. Професійні станки Tapco та швидке виконання.</p>
-      <a href="#catalog" class="btn">Замовити розрахунок</a>
     </div>
   </section>
 
-  <section id="about">
-    <div class="container">
-      <div class="section-title">
-        <h2>Чому обирають <span>нас</span></h2>
-      </div>
-      <div class="about-list">
-        <div>Точна геометрія виробів</div>
-        <div>Будь-який колір RAL</div>
-        <div>Оцинкована сталь 0.45-0.7мм</div>
-        <div>Виготовлення за 24 години</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="catalog" style="background: #fff;">
-    <div class="container">
-      <div class="section-title">
-        <h2>Наш <span>Каталог</span></h2>
-      </div>
-      <div class="grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1617191519105-d0c02f0d922a?q=80&w=800" alt="Парапет" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title">Парапетні планки</h3>
-            <p>Захист для парканів та стін. Будь-яка форма.</p>
-            <div class="price">від 250 ₴/м</div>
-            <a href="#calculator" class="btn" style="padding: 10px 20px; font-size: 14px;">Порахувати</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800" alt="Відлив" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title">Віконні відливи</h3>
-            <p>Сталь з полімерним покриттям. Чіткі кути.</p>
-            <div class="price">від 180 ₴/м</div>
-            <a href="#calculator" class="btn" style="padding: 10px 20px; font-size: 14px;">Порахувати</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=800" alt="Спецпланка" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title">Спецвироби</h3>
-            <p>Гнуття за вашими індивідуальними кресленнями.</p>
-            <div class="price">Договірна</div>
-            <a href="#calculator" class="btn" style="padding: 10px 20px; font-size: 14px;">Прорахувати</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="calculator">
-    <div class="container">
-        <div class="section-title">
-            <h2>Онлайн <span>Калькулятор</span></h2>
-            <p>Вкажіть розміри, товщину та колір для точного прорахунку</p>
-        </div>
-        <div class="calc-box">
-            <div class="calc-row">
-                <div class="calc-col">
-                    <label>Виріб</label>
-                    <select id="prodType">
-                        <option value="450">Парапет (Глянець)</option>
-                        <option value="480">Парапет (Мат)</option>
-                        <option value="420">Відлив віконний</option>
-                        <option value="550">Спецпланка складна</option>
-                    </select>
-                </div>
-                <div class="calc-col">
-                    <label>Колір (RAL)</label>
-                    <select id="prodColor">
-                        <option value="7024">7024 (Графіт)</option>
-                        <option value="8017">8017 (Шоколад)</option>
-                        <option value="8019">8019 (Темно-коричневий)</option>
-                        <option value="9005">9005 (Чорний)</option>
-                        <option value="3005">3005 (Вишневий)</option>
-                        <option value="6005">6005 (Зелений)</option>
-                        <option value="9003">9003 (Білий)</option>
-                        <option value="Цинк">Оцинковка (Без кольору)</option>
-                    </select>
-                </div>
-                <div class="calc-col">
-                    <label>Товщина металу</label>
-                    <select id="prodThickness">
-                        <option value="1">0.45 мм (Стандарт)</option>
-                        <option value="1.15">0.50 мм (Посилений)</option>
-                        <option value="1.4">0.70 мм (Промисловий)</option>
-                    </select>
-                </div>
-            </div>
-            <div class="calc-row">
-                <div class="calc-col">
-                    <label>Довжина (метрів)</label>
-                    <input type="number" id="len" value="1" step="0.1" min="0.1">
-                </div>
-                <div class="calc-col">
-                    <label>Розгортка (ширина в мм)</label>
-                    <input type="number" id="width" value="250" step="10" min="50">
-                </div>
-            </div>
-            <div class="calc-result">
-                <span>Орієнтовна вартість:</span>
-                <div id="totalPrice">0 ₴</div>
-                <button onclick="sendToTelegram()" class="btn">Замовити розрахунок в Telegram</button>
-                <p style="margin-top: 15px; font-size: 13px; color: #888;">*Ціна є орієнтовною та може змінюватись залежно від складності згинів та наявності металу.</p>
-            </div>
-        </div>
-    </div>
-  </section>
-  <section class="contacts" id="contacts">
-    <div class="container">
-      <div class="section-title">
-        <h2 style="color: #fff;">Зв'яжіться з <span>нами</span></h2>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-item">
-          <h3>📍 Виробництво</h3>
-          <p>м.Kyiv</p>
-        </div>
-        <div class="contact-item">
-          <h3>📞 Телефон</h3>
-          <a href="tel:+380675555555">+38 (067) 555-55-55</a>
-        </div>
-        <div class="contact-item">
-          <h3>💬 Месенджери</h3>
-          <a href="https://t.me/твій_нік" style="color:#0088cc;">Telegram</a>
-          <a href="viber://chat?number=%2B380675555555" style="color:#7360f2;">Viber</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2026 GBUD.Digital. Працюємо на результат.
+  <footer class="bg-black py-12 text-center text-zinc-500">
+    © 2026 NeonForge • Київ, Україна • Зроблено з душею та сучасними технологіями
   </footer>
 
   <script>
-    // Скрипт для мобільного меню
-    const menuBtn = document.getElementById('menuBtn');
-    const navMenu = document.getElementById('navMenu');
+    // Tailwind config (v4 стиль)
+    tailwind.config = { content: [] }
 
-    menuBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-
-    // Закриття меню при кліку на посилання
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-      });
-    });
-
-    // ДОДАНО: Скрипт для калькулятора
-    const pType = document.getElementById('prodType');
-    const pColor = document.getElementById('prodColor');
-    const pThickness = document.getElementById('prodThickness');
-    const pLen = document.getElementById('len');
-    const pWidth = document.getElementById('width');
-    const tPrice = document.getElementById('totalPrice');
-
-    function calculate() {
-        let basePrice = parseFloat(pType.value);
-        let thicknessMultiplier = parseFloat(pThickness.value);
-        let length = parseFloat(pLen.value) || 0;
-        let width = (parseFloat(pWidth.value) || 0) / 1000;
-        
-        let total = Math.ceil(basePrice * thicknessMultiplier * length * width);
-        if (total < 100 && total > 0) total = 100; 
-        
-        tPrice.innerText = total + " ₴";
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark')
+      const icon = document.getElementById('theme-btn').querySelector('i')
+      icon.classList.toggle('fa-moon')
+      icon.classList.toggle('fa-sun')
     }
 
-    [pType, pColor, pThickness, pLen, pWidth].forEach(el => el.addEventListener('input', calculate));
-    calculate(); // Запуск при завантаженні
+    // Pricing switch (місяць / рік)
+    let isYear = false
+    function switchPricing(mode) {
+      isYear = mode === 1
+      const multiplier = isYear ? 0.7 : 1   // -30%
 
-    function sendToTelegram() {
-        let productName = pType.options[pType.selectedIndex].text;
-        let thicknessName = pThickness.options[pThickness.selectedIndex].text;
-        
-        let msg = `🔥 Нове замовлення з сайту (Прорахунок):%0A` +
-                  `------------------------%0A` +
-                  `🏗 Виріб: ${productName}%0A` +
-                  `📏 Товщина: ${thicknessName}%0A` +
-                  `🎨 Колір RAL: ${pColor.value}%0A` +
-                  `📐 Довжина: ${pLen.value} м%0A` +
-                  `↔️ Розгортка: ${pWidth.value} мм%0A` +
-                  `------------------------%0A` +
-                  `💰 Попередня сума: ${tPrice.innerText}`;
-                  
-        window.location.href = `https://t.me/твій_нік?text=${msg}`; // ЗАМІНИ 'твій_нік' НА СВІЙ
+      document.getElementById('price-0').innerHTML = Math.round(15000 * multiplier) + ' ₴<span class="text-base font-normal text-zinc-400">/' + (isYear ? 'рік' : 'міс') + '</span>'
+      document.getElementById('price-1').innerHTML = Math.round(45000 * multiplier) + ' ₴<span class="text-base font-normal text-zinc-400">/' + (isYear ? 'рік' : 'міс') + '</span>'
+      document.getElementById('price-2').innerHTML = Math.round(120000 * multiplier) + ' ₴<span class="text-base font-normal text-zinc-400">/' + (isYear ? 'рік' : 'міс') + '</span>'
+
+      document.getElementById('btn-month').classList.toggle('bg-white', !isYear)
+      document.getElementById('btn-month').classList.toggle('text-black', !isYear)
+      document.getElementById('btn-year').classList.toggle('bg-white', isYear)
+      document.getElementById('btn-year').classList.toggle('text-black', isYear)
     }
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1
+          entry.target.style.transform = 'translateY(0)'
+        }
+      })
+    }, { threshold: 0.15 })
+
+    document.querySelectorAll('.glass, .card-hover').forEach(el => {
+      el.style.transition = 'all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)'
+      el.style.opacity = 0
+      el.style.transform = 'translateY(40px)'
+      observer.observe(el)
+    })
+
+    console.log('%cNeonForge — максимально потужний сайт 2026 року готовий! 🔥', 'color:#c026d3; font-size:18px; font-weight:bold')
   </script>
-
 </body>
 </html>
