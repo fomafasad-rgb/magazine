@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeonForge — Сучасні цифрові рішення</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+    
+    :root {
+      --primary: 139 92 246;
+    }
+    .dark {
+      --primary: 167 139 250;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .heading {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .hero-bg {
+      background: radial-gradient(at center bottom, rgb(30 41 59), rgb(15 23 42));
+    }
+    
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white dark">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="text-2xl font-bold heading tracking-tighter">NeonForge</div>
+      
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#features" class="hover:text-violet-400 transition">Можливості</a>
+        <a href="#projects" class="hover:text-violet-400 transition">Проекти</a>
+        <a href="#pricing" class="hover:text-violet-400 transition">Ціни</a>
+        <a href="#contact" class="hover:text-violet-400 transition">Контакти</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button onclick="toggleTheme()" id="theme-btn"
+          class="p-3 rounded-2xl hover:bg-white/10 transition">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button onclick="alert('Демо форма відкритта!')"
+          class="px-6 py-3 bg-violet-600 hover:bg-violet-700 rounded-2xl font-medium transition">
+          Почати проект
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <div class="inline-flex items-center gap-2 bg-white/10 px-5 py-2 rounded-full text-sm">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+          </span>
+          Запуск нового продукту 2026
+        </div>
+
+        <h1 class="text-6xl md:text-7xl font-bold heading leading-none tracking-tighter">
+          Створюємо цифрові<br>продукти, які <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-500">вражають</span>
+        </h1>
+
+        <p class="text-xl text-zinc-400 max-w-lg">
+          Сучасні веб-сайти, веб-додатки та брендинг для компаній, які хочуть бути на крок попереду.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"
+            class="px-8 py-4 bg-white text-black font-semibold rounded-3xl hover:scale-105 transition flex items-center gap-3">
+            Обговорити проект
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button onclick="window.open('https://github.com', '_blank')"
+            class="px-8 py-4 border border-white/30 hover:border-white/60 rounded-3xl transition">
+            Дивитись демо
+          </button>
+        </div>
+
+        <div class="flex items-center gap-8 text-sm text-zinc-400">
+          <div>★ 4.98/5</div>
+          <div>120+ проектів</div>
+          <div>Україна • Європа</div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -inset-10 bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 rounded-[4rem] blur-3xl"></div>
+        <img src="https://picsum.photos/id/1015/800/600" alt="Hero image" 
+             class="rounded-3xl shadow-2xl border border-white/10 relative z-10">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-24 bg-zinc-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-bold heading">Чому обирають нас</h2>
+        <p class="mt-4 text-zinc-400">Сучасні технології + увага до деталей</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Feature cards -->
+        <div class="glass p-8 rounded-3xl hover:scale-105 transition group">
+          <div class="text-4xl mb-6">⚡</div>
+          <h3 class="text-2xl font-semibold mb-3">Блискавична швидкість</h3>
+          <p class="text-zinc-400">Core Web Vitals 100/100. Завантаження менше 1 секунди.</p>
+        </div>
+        <div class="glass p-8 rounded-3xl hover:scale-105 transition group">
+          <div class="text-4xl mb-6">🎨</div>
+          <h3 class="text-2xl font-semibold mb-3">Дизайн преміум класу</h3>
+          <p class="text-zinc-400">Анімації, мікро-взаємодії та ідеальна типографіка.</p>
+        </div>
+        <div class="glass p-8 rounded-3xl hover:scale-105 transition group">
+          <div class="text-4xl mb-6">🔒</div>
+          <h3 class="text-2xl font-semibold mb-3">Безпечний та масштабовний</h3>
+          <p class="text-zinc-400">SEO, доступність, PWA — все готове до зростання.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Footer-like section -->
+  <section id="contact" class="py-24 border-t border-white/10">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-5xl font-bold heading mb-6">Готові створити щось круте?</h2>
+      <p class="text-2xl text-zinc-400 mb-10">Напишіть нам — і ми зробимо ваш проект реальністю за 2-4 тижні.</p>
+      
+      <button onclick="alert('Форма відправлена! (демо)')"
+        class="px-12 py-6 text-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-3xl font-semibold hover:scale-105 transition">
+        Почати співпрацю →
+      </button>
+    </div>
+  </section>
+
+  <footer class="bg-black py-12 text-center text-zinc-500 text-sm">
+    © 2026 NeonForge. Зроблено з ❤️ в Києві
+  </footer>
+
+  <script>
+    // Tailwind script
+    tailwind.config = {
+      content: [],
+      theme: {
+        extend: {}
+      }
+    }
+
+    // Dark/Light toggle
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark')
+      const btn = document.getElementById('theme-btn')
+      btn.innerHTML = document.documentElement.classList.contains('dark') 
+        ? '<i class="fa-solid fa-sun"></i>' 
+        : '<i class="fa-solid fa-moon"></i>'
+    }
+
+    // Smooth scroll for all anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if (this.getAttribute('href') !== '#') {
+          e.preventDefault()
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          })
+        }
+      })
+    })
+
+    // Simple scroll animation for cards
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1'
+          entry.target.style.transform = 'translateY(0)'
+        }
+      })
+    }, { threshold: 0.1 })
+
+    document.querySelectorAll('.glass').forEach(card => {
+      card.style.opacity = '0'
+      card.style.transform = 'translateY(30px)'
+      card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+      observer.observe(card)
+    })
+
+    console.log('%cNeonForge — потужний сучасний сайт готовий! 🚀', 'color: #a78bfa; font-size: 16px;')
+  </script>
+</body>
+</html>
