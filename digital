@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GBUD.Digital — Метал та Технології | PropTech Ukraine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+    
+    body { font-family: 'Inter', sans-serif; }
+    .heading { font-family: 'Space Grotesk', sans-serif; }
+
+    .hero-bg {
+      background: radial-gradient(circle at 30% 20%, rgba(167,139,250,0.25), transparent 50%),
+                  radial-gradient(circle at 70% 80%, rgba(236,72,153,0.2), transparent 50%),
+                  #0a0a0a;
+    }
+
+    .glass { 
+      background: rgba(255,255,255,0.06); 
+      backdrop-filter: blur(16px); 
+      border: 1px solid rgba(255,255,255,0.08); 
+    }
+
+    .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card-hover:hover { transform: translateY(-12px) scale(1.03); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4); }
+    
+    /* Анімація мобільного меню */
+    #mobile-menu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
+    #mobile-menu.open { transform: translateX(0); }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 overflow-x-hidden">
+
+  <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="text-3xl font-bold heading tracking-tighter bg-gradient-to-r from-violet-400 to-fuchsia-500 bg-clip-text text-transparent">GBUD.Digital</div>
+      
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="#features" class="hover:text-violet-400 transition">Експертиза</a>
+        <a href="#projects" class="hover:text-violet-400 transition">Проекти</a>
+        <a href="#proptech" class="hover:text-violet-400 transition">PropTech</a>
+        <a href="#contact" class="hover:text-violet-400 transition">Контакти</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button onclick="toggleMenu()" class="md:hidden p-3 rounded-2xl hover:bg-white/10 transition">
+          <i class="fa-solid fa-bars-staggered text-xl"></i>
+        </button>
+        <a href="#contact" class="hidden sm:block px-7 py-3 bg-violet-600 hover:bg-violet-700 rounded-3xl font-semibold transition">Обговорити проект</a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="fixed inset-0 z-[60] bg-zinc-950/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 md:hidden">
+    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-3xl">&times;</button>
+    <a href="#features" onclick="toggleMenu()" class="text-3xl font-bold heading">Експертиза</a>
+    <a href="#projects" onclick="toggleMenu()" class="text-3xl font-bold heading">Проекти</a>
+    <a href="#proptech" onclick="toggleMenu()" class="text-3xl font-bold heading">PropTech</a>
+    <a href="#contact" onclick="toggleMenu()" class="px-10 py-4 bg-violet-600 rounded-3xl text-xl font-bold">Контакти</a>
+  </div>
+
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-10">
+        <div class="inline-flex items-center gap-3 bg-white/10 px-6 py-3 rounded-3xl text-sm">
+          <span class="animate-pulse w-2 h-2 bg-emerald-400 rounded-full"></span>
+          Будівництво 2026 — Цифрова трансформація
+        </div>
+
+        <h1 class="text-6xl lg:text-7xl font-bold heading leading-none tracking-tighter">
+          Майстерність сталі.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400">Точність цифри.</span>
+        </h1>
+
+        <p class="text-2xl text-zinc-400 max-w-lg">
+          Ми об'єднали 25 років досвіду в роботі з металом та сучасні ІТ-рішення для розумного будівництва.
+        </p>
+
+        <div class="flex flex-wrap gap-5">
+          <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+            class="px-10 py-5 text-lg font-semibold bg-white text-black rounded-3xl hover:scale-105 active:scale-95 transition flex items-center gap-3">
+            Почати проект
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button onclick="window.scrollTo({top: document.getElementById('proptech').offsetTop - 100, behavior: 'smooth'})"
+            class="px-10 py-5 text-lg font-medium border border-white/30 hover:border-white/70 rounded-3xl transition">
+            PropTech рішення
+          </button>
+        </div>
+
+        <div class="flex items-center gap-12 text-sm">
+          <div><span class="text-emerald-400 font-semibold">25+ років</span> у металі</div>
+          <div><span class="text-emerald-400 font-semibold">100%</span> діджиталізація</div>
+          <div>Ірпінь • Вишгород • Київ</div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-violet-500/30 to-pink-500/30 rounded-[4rem] blur-3xl"></div>
+        <img src="https://picsum.photos/id/1031/900/620" alt="Metal & Tech" 
+             class="rounded-3xl shadow-2xl border border-white/10 relative z-10 w-full">
+        <div class="absolute -bottom-6 -right-6 glass p-6 rounded-3xl text-center">
+          <div class="text-4xl font-bold text-emerald-400">0.1 mm</div>
+          <div class="text-sm text-zinc-400">Точність гнуття металу</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div><div class="text-5xl font-bold text-violet-400">25</div><div class="text-zinc-400">Років досвіду</div></div>
+    <div><div class="text-5xl font-bold text-violet-400">4K</div><div class="text-zinc-400">Моніторинг дронами</div></div>
+    <div><div class="text-5xl font-bold text-violet-400">100%</div><div class="text-zinc-400">Контроль якості</div></div>
+    <div><div class="text-5xl font-bold text-violet-400">Tapco</div><div class="text-zinc-400">High-end обладнання</div></div>
+  </div>
+
+  <section id="features" class="py-24 bg-zinc-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-bold heading">Напрямки GBUD.Digital</h2>
+        <p class="mt-4 text-xl text-zinc-400">Від ручної роботи до хмарних обчислень</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="glass p-10 rounded-3xl card-hover">
+          <div class="text-5xl mb-6">🛠️</div>
+          <h3 class="text-3xl font-semibold mb-4">СмартПланка</h3>
+          <p class="text-zinc-400">Виготовлення складних елементів на верстатах Tapco та VanMark з цифровим контролем.</p>
+        </div>
+        <div class="glass p-10 rounded-3xl card-hover" id="proptech">
+          <div class="text-5xl mb-6">🚁</div>
+          <h3 class="text-3xl font-semibold mb-4">PropTech Ukraine</h3>
+          <p class="text-zinc-400">Технологічний моніторинг будівель дронами. Цифрові звіти та аналітика фасадів.</p>
+        </div>
+        <div class="glass p-10 rounded-3xl card-hover">
+          <div class="text-5xl mb-6">🤖</div>
+          <h3 class="text-3xl font-semibold mb-4">AI у будівництві</h3>
+          <p class="text-zinc-400">Впровадження ШІ для оптимізації кошторисів та управління розумним будинком.</p>
+        </div>
+        <div class="glass p-10 rounded-3xl card-hover">
+          <div class="text-5xl mb-6">🏗️</div>
+          <h3 class="text-3xl font-semibold mb-4">Фасади & Покрівля</h3>
+          <p class="text-zinc-400">Комплексні рішення для сучасних об'єктів будь-якої складності.</p>
+        </div>
+        <div class="glass p-10 rounded-3xl card-hover">
+          <div class="text-5xl mb-6">🏠</div>
+          <h3 class="text-3xl font-semibold mb-4">Smart Home</h3>
+          <p class="text-zinc-400">Інтеграція систем Home Assistant для повного контролю за вашим житлом.</p>
+        </div>
+        <div class="glass p-10 rounded-3xl card-hover">
+          <div class="text-5xl mb-6">🚀</div>
+          <h3 class="text-3xl font-semibold mb-4">Консалтинг</h3>
+          <p class="text-zinc-400">Допомагаємо бізнесу впроваджувати технології там, де їх ніколи не було.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="py-24 bg-zinc-900 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 text-center mb-12">
+      <h2 class="text-5xl font-bold heading">Вартість послуг</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto px-6">
+      <div class="glass p-10 rounded-3xl text-center">
+        <h3 class="text-2xl font-semibold mb-2">Bending</h3>
+        <div class="text-4xl font-bold mb-8">від 500 ₴<span class="text-base font-normal text-zinc-400">/п.м.</span></div>
+        <ul class="space-y-4 text-left mb-10 text-sm">
+          <li>✓ Гнуття на Tapco/VanMark</li>
+          <li>✓ Складні елементи</li>
+          <li>✓ Ваша або наша сировина</li>
+        </ul>
+        <button class="w-full py-4 border border-white/30 rounded-3xl">Замовити</button>
+      </div>
+
+      <div class="glass p-10 rounded-3xl text-center ring-2 ring-violet-500 relative">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-violet-600 text-white text-xs px-6 py-1 rounded-full">Популярне</div>
+        <h3 class="text-2xl font-semibold mb-2">PropTech Scan</h3>
+        <div class="text-4xl font-bold mb-8">від 5 000 ₴</div>
+        <ul class="space-y-4 text-left mb-10 text-sm">
+          <li>✓ Обліт об'єкта дроном</li>
+          <li>✓ 4K фото/відео звіт</li>
+          <li>✓ Аналіз дефектів фасаду</li>
+        </ul>
+        <button class="w-full py-4 bg-violet-600 rounded-3xl font-semibold">Замовити аудит</button>
+      </div>
+
+      <div class="glass p-10 rounded-3xl text-center">
+        <h3 class="text-2xl font-semibold mb-2">Digital Integration</h3>
+        <div class="text-4xl font-bold mb-8">Custom</div>
+        <ul class="space-y-4 text-left mb-10 text-sm">
+          <li>✓ Автоматизація бізнес-процесів</li>
+          <li>✓ Налаштування Smart Home</li>
+          <li>✓ Технічна підтримка</li>
+        </ul>
+        <button class="w-full py-4 border border-white/30 rounded-3xl">Обговорити</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-32 text-center bg-gradient-to-b from-transparent via-violet-950/30 to-transparent">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-6xl font-bold heading mb-6">Готові до змін?</h2>
+      <p class="text-2xl text-zinc-400 mb-12">Зробимо ваш будівельний бізнес технологічним разом.</p>
+      <button onclick="alert('Дякуємо! Ми зв\'яжемося з вами найближчим часом.')"
+        class="px-16 py-7 text-2xl font-semibold bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-3xl hover:scale-105 transition">
+        Написати нам →
+      </button>
+    </div>
+  </section>
+
+  <footer class="bg-black py-12 text-center text-zinc-500 border-t border-white/10">
+    © 2026 GBUD.Digital • PropTech Ukraine • Ірпінь - Вишгород
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('open');
+      document.body.classList.toggle('overflow-hidden');
+    }
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.glass, .card-hover').forEach(el => {
+      el.style.transition = 'all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)';
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(40px)';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
